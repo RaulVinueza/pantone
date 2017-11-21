@@ -7,7 +7,7 @@ const io = socket.listen(server)
 app.use(express.static('public'))
 
 io.on('connection', function(socket){
-    
+
     socket.emit('newColor', {color: '#777'})
 
     socket.on('requestColor', function(data){
@@ -16,5 +16,3 @@ io.on('connection', function(socket){
         socket.emit('newColor', {color: ambientHex})
     })
 })
-
-
