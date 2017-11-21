@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pant0ne</title>
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <style>
+            #body{
+                transition: background-color 3s linear;
+                color: black;
+                font-family: 'Lobster', cursive;
+                font-size: 4em;
+                text-align: center;
+                text-shadow: 5px 5px rgb(58, 58, 58);
+            }
+
+            #body h1 span {
+                color: white;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <h1>Pan<span>tone</span></h1>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+          // Load the socket.io library above, then connect to the server.
+          // Because the socket.io server is being run on the same server as your 
+          // Express instance, you can connect() without any arguments.
+          var socket = io.connect();
+          socket.on('connect', function(){
+            console.log('connected to server via WebSockets!');
+          });
+          // When 'new_tweet' events are fired, do something with the packaged tweet
+          socket.on('newColor', function (newColor) { 
+            console.log(newColor)
+            document.getElementById('body').style.backgroundColor = newColor.color
+            setTimeout(function(){
+                console.log('requesting new color')
+                socket.emit('requestColor', {data: 'requested'})
+            }, 3000)
+          }); 
+        </script>
+    </body>
+</html>
