@@ -20,26 +20,11 @@
         </style>
     </head>
     <body id="body">
-        <h1>Pan<span>tone</span></h1>
+        <h1>Ram<span>Brandt</span></h1>
         
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-          // Load the socket.io library above, then connect to the server.
-          // Because the socket.io server is being run on the same server as your 
-          // Express instance, you can connect() without any arguments.
-          var socket = io.connect();
-          socket.on('connect', function(){
-            console.log('connected to server via WebSockets!');
-          });
-          // When 'new_tweet' events are fired, do something with the packaged tweet
-          socket.on('newColor', function (newColor) { 
-            console.log(newColor)
-            document.getElementById('body').style.backgroundColor = newColor.color
-            setTimeout(function(){
-                console.log('requesting new color')
-                socket.emit('requestColor', {data: 'requested'})
-            }, 3000)
-          }); 
-        </script>
+        <div class="wrapper">
+            <canvas class="visualizer" width="640" height="100"></canvas> 
+        </div>
+        <script src="../app.js"></script>
     </body>
 </html>
