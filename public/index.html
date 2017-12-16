@@ -5,25 +5,46 @@
         <title>Pant0ne</title>
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <style>
-            #body{
-                transition: background-color 3s linear;
+            body{
+                position: relative;
+            }
+
+            #titleContainer{
+                padding-top: 1em;
+                position: absolute;
                 color: black;
                 font-family: 'Lobster', cursive;
-                font-size: 4em;
-                text-align: center;
+                font-size: 3em;
+                width: 100%;
                 text-shadow: 5px 5px rgb(58, 58, 58);
             }
 
-            #body h1 span {
+            #titleContainer h1{
+                text-align: center;
+            }
+
+            #titleContainer h1 span {
                 color: white;
+            }
+
+            #wrapper {
+                width: 100vw;
+                height: 100vh;
+            }
+            #visualizer{
+                width: 100%;
+                height: 100%;
             }
         </style>
     </head>
-    <body id="body">
-        <h1>Ram<span>Brandt</span></h1>
+    <body>
+        <div id="titleContainer">
+                <h1>Ram<span>Brandt</span></h1>
+        </div>
         
-        <div class="wrapper">
-            <canvas class="visualizer" width="640" height="100"></canvas> 
+        
+        <div id="wrapper">
+            <canvas id="visualizer"></canvas> 
         </div>
         <script src="../app.js"></script>
     </body>
